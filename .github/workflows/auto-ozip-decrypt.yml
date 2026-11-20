@@ -42,7 +42,7 @@ jobs:
              
        - name: Decrypting Ozip Now
          run: |
-             wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
+             wget https://raw.githubusercontent.com/bkerler/oppo_ozip_decrypt/master/ozipdecrypt.py
              sudo python ozipdecrypt.py $FIRMWARE_NAME             
 
        - name: Upload Decrypted zip if AES keys not found.
