@@ -26,6 +26,13 @@ jobs:
     steps:
        - name: Checkout
          uses: actions/checkout@master
+
+       - name: Prepare Env
+         run: |
+             sudo -E apt-get -qq update
+             sudo apt-get install python3-pip
+             sudo pip install --upgrade --ignore-installed pip
+             sudo -H pip install setuptools wheel docopt pycryptodome
          
        - name: Downloading Ozip Now
          run: |
@@ -35,10 +42,6 @@ jobs:
              
        - name: Decrypting Ozip Now
          run: |
-             sudo -E apt-get -qq update
-             sudo apt-get install python3-pip
-             sudo pip install --upgrade --ignore-installed pip
-             sudo -H pip install setuptools wheel docopt pycryptodome
              wget https://raw.githubusercontent.com/techyminati/oppo_ozip_decrypt/master/ozipdecrypt.py
              sudo python ozipdecrypt.py $FIRMWARE_NAME             
 
